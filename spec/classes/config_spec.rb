@@ -211,10 +211,15 @@ class { 'influxdb':
 
         describe 'startup config' do
           let(:startup_conf) do
-            if facts[:os][:release][:major].to_i < 7 && (facts[:os][:family] == 'RedHat')
-              '/etc/sysconfig/influxdb'
-            else
+            case facts[:os]['family']
+            when 'Debian', 'Archlinux'
               '/etc/default/influxdb'
+            when 'RedHat'
+              if facts[:os]['release']['major'].to_i == 7
+                '/etc/default/influxdb'
+              else
+                '/etc/sysconfig/influxdb'
+              end
             end
           end
 

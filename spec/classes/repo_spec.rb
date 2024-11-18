@@ -6,7 +6,7 @@ describe 'influxdb::repo' do
       let(:facts) { facts }
 
       describe 'with default params' do
-        case facts[:os][:family]
+        case facts[:os]['family']
         when 'Archlinux'
           next
         when 'Debian'

@@ -5,6 +5,8 @@ describe 'influxdb::install' do
     context "on #{os}" do
       let(:facts) { facts }
 
+      let(:contained_class) { nil }
+
       describe 'with default params' do
         let(:pre_condition) do
           <<-EOS
@@ -35,7 +37,7 @@ include influxdb
 
           EOS
         end
-        case facts[:os][:family]
+        case facts[:os]['family']
         when 'Archlinux'
           next
         when 'Debian'

@@ -3,16 +3,16 @@ require 'spec_helper'
 describe 'influxdb::repo::yum' do
   on_supported_os.each do |os, facts|
     # A little ugly, but we only want to run our tests for RHEL based machines.
-    next unless facts[:os][:family] == 'RedHat'
+    next unless facts[:os]['family'] == 'RedHat'
 
     context "on #{os}" do
       let(:facts) { facts }
 
       describe 'with default params' do
         let(:_operatingsystem) do
-          case facts[:os][:name]
+          case facts[:os]['name']
           when 'CentOS'
-            facts[:os][:name].downcase
+            facts[:os]['name'].downcase
           else
             'rhel'
           end

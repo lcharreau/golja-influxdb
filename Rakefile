@@ -1,14 +1,9 @@
+# frozen_string_literal: true
+
+require 'bundler'
+require 'puppet_litmus/rake_tasks' if Gem.loaded_specs.key? 'puppet_litmus'
 require 'puppetlabs_spec_helper/rake_tasks'
-require 'puppet-lint/tasks/puppet-lint'
+require 'puppet-syntax/tasks/puppet-syntax'
+require 'puppet-strings/tasks' if Gem.loaded_specs.key? 'puppet-strings'
 
-PuppetLint.configuration.send('relative')
-PuppetLint.configuration.send("disable_80chars")
-PuppetLint.configuration.send('disable_class_parameter_defaults')
-PuppetLint.configuration.send('disable_class_inherits_from_params_class')
-PuppetLint.configuration.send('disable_documentation')
-PuppetLint.configuration.log_format = "%{path}:%{line}:%{check}:%{KIND}:%{message}"
-PuppetLint.configuration.fail_on_warnings = true
-PuppetLint.configuration.ignore_paths = ["pkg/**/*", "vendor/**/*", "spec/**/*"]
-
-desc "Run syntax, lint, and beaker/rspec tests."
-task :test => [:validate, :lint, :spec]
+PuppetLint.configuration.send('disable_relative')

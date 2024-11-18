@@ -7,57 +7,60 @@
   "source": "https://github.com/codylane/golja-influxdb",
   "project_page": "https://github.com/codylane/golja-influxdb",
   "issues_url": "https://github.com/codylane/golja-influxdb/issues",
-  "tags": [
-    "influxdb",
-    "metrics"
-  ],
-  "operatingsystem_support": [
-    {
-      "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "6",
-        "7"
-      ]
-    },
-    {
-      "operatingsystem": "CentOS",
-      "operatingsystemrelease": [
-        "6",
-        "7"
-      ]
-    },
-    {
-      "operatingsystem": "Debian",
-      "operatingsystemrelease": [
-        "8",
-        "9"
-      ]
-    },
-    {
-      "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [
-        "16.04",
-        "18.04"
-      ]
-    },
-    {
-      "operatingsystem": "Archlinux"
-    }
-  ],
-  "requirements": [
-    {
-      "name": "puppet",
-      "version_requirement": ">= 3.0.0 <7.0.0"
-    }
-  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 1.0.0 <6.0.0"
+      "version_requirement": ">= 1.0.0 <10.0.0"
     },
     {
       "name": "puppetlabs/apt",
       "version_requirement": ">=1.8.0 <7.0.0"
     }
-  ]
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "18.04",
+        "20.04",
+        "22.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.0.0 <9.0.0"
+    }
+  ],
+  "tags": [
+    "influxdb",
+    "metrics"
+  ],
+  "pdk-version": "3.2.0",
+  "template-url": "pdk-default#3.2.0",
+  "template-ref": "tags/3.2.0-0-gb257ef1"
 }

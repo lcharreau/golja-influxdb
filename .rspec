@@ -1,4 +1,2 @@
---format d
 --color
---tty
---backtrace
+--format documentation
