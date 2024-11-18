@@ -35,7 +35,7 @@ include influxdb
 
           EOS
         end
-        case facts[:osfamily]
+        case facts[:os][:family]
         when 'Archlinux'
           next
         when 'Debian'

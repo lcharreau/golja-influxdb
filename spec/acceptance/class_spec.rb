@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-describe 'influxdb class', unless: UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
+describe 'influxdb class', unless: UNSUPPORTED_PLATFORMS.include?(fact('os.family')) do
   context 'default parameters' do
     pp = <<-EOS
 

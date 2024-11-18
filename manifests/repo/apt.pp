@@ -5,7 +5,7 @@ class influxdb::repo::apt(
 ) {
 
   #downcase operatingsystem
-  $_operatingsystem = downcase($::operatingsystem)
+  $_operatingsystem = downcase($::facts['os']['name'])
 
   $key = {
     'id'     => '05CE15085FC09D18E99EFB22684A14CF2582E0C5',
@@ -19,7 +19,7 @@ class influxdb::repo::apt(
   apt::source { 'repos.influxdata.com':
     ensure   => $ensure,
     location => "https://repos.influxdata.com/${_operatingsystem}",
-    release  => $::lsbdistcodename,
+    release  => $::facts['os']['distro']['codename'],
     repos    => 'stable',
     key      => $key,
     include  => $include,

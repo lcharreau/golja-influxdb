@@ -3,13 +3,13 @@ require 'spec_helper'
 describe 'influxdb::repo::apt' do
   on_supported_os.each do |os, facts|
     # A little ugly, but we only want to run our tests for Debian based machines.
-    next unless facts[:operatingsystem] == 'Debian'
+    next unless facts[:os][:name] == 'Debian'
 
     context "on #{os}" do
       let(:facts) { facts }
 
       describe 'with default params' do
-        let(:_operatingsystem) { facts[:operatingsystem].downcase }
+        let(:_operatingsystem) { facts[:os][:name].downcase }
 
         let(:key) do
           {
@@ -27,7 +27,7 @@ describe 'influxdb::repo::apt' do
         it do
           is_expected.to contain_apt__source('repos.influxdata.com').with(ensure: 'present',
                                                                           location: "https://repos.influxdata.com/#{_operatingsystem}",
-                                                                          release: facts[:lsbdistcodename],
+                                                                          release: facts[:os][:distro][:codename],
                                                                           repos: 'stable',
                                                                           key: key,
                                                                           include: include)

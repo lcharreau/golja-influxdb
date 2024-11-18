@@ -6,7 +6,7 @@ describe 'influxdb::repo' do
       let(:facts) { facts }
 
       describe 'with default params' do
-        case facts[:osfamily]
+        case facts[:os][:family]
         when 'Archlinux'
           next
         when 'Debian'
@@ -28,7 +28,11 @@ describe 'influxdb::repo' do
       end
       describe 'should fail when not-supported OS' do
         let(:facts) do
-          facts.merge(osfamily: 'foobar')
+          facts.merge(
+            os: {
+              family: 'foobar'
+            }
+          )
         end
 
         it { is_expected.to compile.and_raise_error(%r{Unsupported managed repository}) }

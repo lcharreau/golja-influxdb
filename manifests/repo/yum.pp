@@ -5,14 +5,14 @@ class influxdb::repo::yum(
   $gpgcheck = 1,
 ) {
 
-  $_operatingsystem = $::operatingsystem ? {
-    'CentOS' => downcase($::operatingsystem),
+  $_operatingsystem = $::facts['os']['name'] ? {
+    'CentOS' => downcase($::facts['os']['name']),
     default  => 'rhel',
   }
 
   yumrepo { 'repos.influxdata.com':
     ensure   => $ensure,
-    descr    => "InfluxDB Repository - ${::operatingsystem} \$releasever",
+    descr    => "InfluxDB Repository - ${::facts['os']['name']} \$releasever",
     baseurl  => "https://repos.influxdata.com/${$_operatingsystem}/\$releasever/\$basearch/stable",
     enabled  => $enabled,
     gpgcheck => $gpgcheck,
